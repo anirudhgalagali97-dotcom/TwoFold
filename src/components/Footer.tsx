@@ -8,6 +8,7 @@ export function Footer() {
         <div className="md:col-span-5">
           <Logo />
           <p className="mt-4 max-w-[36ch] text-[15px] leading-relaxed text-ink-2">{brand.tagline}, from desi cows raised on our family farm.</p>
+          <p className="mt-3 text-[15px] font-medium">{brand.motto}.</p>
         </div>
         <nav aria-label="Footer" className="md:col-span-3">
           <ul className="grid gap-2 text-[15px]">

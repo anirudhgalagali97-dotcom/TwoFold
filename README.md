@@ -27,7 +27,7 @@ The page is designed to work without photos and switches to real photos automati
 | `hallikar.jpg` | Our herd | 800 x 1000 |
 | `farm.jpg` | The farm | 1600 x 1000 |
 
-Product images in `public/images/products/` are 3D renders and can be replaced with real product photos (transparent PNG works best).
+Product images in `public/images/products/` are Cattle Co.'s own product photos, cropped from the current site. Replace them with the original full-resolution files for the sharpest result.
 
 ## Design notes
 

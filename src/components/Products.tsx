@@ -17,19 +17,23 @@ function ProductCard({ p, tone, layout, cta }: { p: Product; tone: Tone; layout:
   return (
     <article className={`group relative flex h-full overflow-hidden rounded-[28px] ${t.card} ${layout === "wide" ? "flex-col sm:flex-row" : "flex-col"}`}>
       <div
-        className={`relative ${
-          layout === "tall" ? "min-h-[300px] flex-1 md:min-h-[420px]" : layout === "wide" ? "min-h-[220px] sm:order-2 sm:w-[46%]" : "h-[200px]"
+        className={`relative m-2 overflow-hidden rounded-[20px] ${
+          layout === "tall"
+            ? "aspect-square md:aspect-auto md:min-h-[420px] md:flex-1"
+            : layout === "wide"
+              ? "aspect-square sm:order-2 sm:w-[40%] sm:shrink-0"
+              : "aspect-[4/3]"
         }`}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={p.image}
-          alt={p.name}
+          alt={`${p.name} by Cattle Co.`}
           loading="lazy"
-          className="absolute inset-0 h-full w-full object-contain p-4 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
+          className={`absolute inset-0 h-full w-full object-cover ${p.id === "milk" ? "object-top" : ""} transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]`}
         />
       </div>
-      <div className={`flex flex-col p-7 ${layout === "wide" ? "justify-end sm:w-[54%]" : ""}`}>
+      <div className={`flex flex-col p-7 pt-5 ${layout === "tall" ? "" : "flex-1"} ${layout === "wide" ? "justify-center sm:pt-7" : ""}`}>
         {p.note && (
           <span className={`mb-4 inline-flex w-fit items-center gap-1.5 rounded-full px-3 py-1 text-sm ${t.chip}`}>
             <CalendarDots size={16} /> {p.note}
@@ -37,7 +41,7 @@ function ProductCard({ p, tone, layout, cta }: { p: Product; tone: Tone; layout:
         )}
         <h3 className={`font-semibold tracking-[-0.02em] ${layout === "tall" ? "text-3xl md:text-4xl" : "text-2xl"}`}>{p.name}</h3>
         <p className={`mt-2 max-w-[42ch] text-[15px] leading-relaxed ${t.sub}`}>{p.body}</p>
-        <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
+        <div className="mt-auto flex flex-wrap items-center justify-between gap-3 pt-6">
           <p className="font-medium">{p.price}</p>
           <a
             href={cta.href}

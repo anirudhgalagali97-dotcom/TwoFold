@@ -4,6 +4,7 @@
 export const brand = {
   name: "Cattle Co.",
   tagline: "Premium A2 milk and natural dairy products",
+  motto: "Farming today for a healthier tomorrow",
   description:
     "Unpasteurised, unskimmed A2 milk from ethically raised Gir, Sahiwal and Hallikar cows, delivered fresh every morning across Bengaluru in glass bottles.",
 };
@@ -88,7 +89,7 @@ export const products: Product[] = [
     body: "Farm-fresh, unpasteurised and unskimmed. Bottled in glass and delivered every morning.",
     price: "Subscriptions from ₹252 a month",
     href: store.home,
-    image: "/images/products/milk.png",
+    image: "/images/products/milk.webp",
   },
   {
     id: "ghee",
@@ -96,16 +97,16 @@ export const products: Product[] = [
     body: "Traditional bilona ghee, churned from cultured butter. Rich in healthy fats.",
     price: "₹80 to ₹1,910",
     href: store.home,
-    image: "/images/products/ghee.png",
+    image: "/images/products/ghee.webp",
   },
   {
     id: "paneer",
     name: "Premium A2 Paneer",
-    body: "Soft, fresh paneer in 100g and 250g packs.",
+    body: "Soft, creamy and wholesome. Handcrafted from our farm's pure A2 milk, in 100g and 250g packs.",
     price: "₹80 to ₹200",
     note: "Weekends only",
     href: store.paneer,
-    image: "/images/products/paneer.png",
+    image: "/images/products/paneer.webp",
   },
   {
     id: "curd",
@@ -113,7 +114,7 @@ export const products: Product[] = [
     body: "Set from our unpasteurised milk and rich in probiotics for gut health.",
     price: "Ask with your order",
     href: store.home,
-    image: "/images/products/curd.png",
+    image: "/images/products/curd.webp",
   },
 ];
 
