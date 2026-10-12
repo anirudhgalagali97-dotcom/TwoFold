@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+/*
+  Palette: cool milk white + pasture green ink, with a single marigold accent
+  (the garland colour cows wear at Sankranti). Light/dark follow the system.
+  Shape system: cards 28px, media 20px, inputs 14px, buttons full pill.
+*/
+:root {
+  --bg: #f1f3ed;
+  --surface: #f9faf6;
+  --surface-2: #e4e9de;
+  --surface-3: #d6ddcf;
+  --ink: #0f1e16;
+  --ink-2: #46544b;
+  --ink-3: #5f6c63;
+  --line: rgb(15 30 22 / 0.12);
+  --accent: #e39b2d;
+  --accent-ink: #0f1e16;
+  --pasture: #1f4a33;
+  --pasture-ink: #eef2ea;
+  --label-ink: #0f1e16;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b140f;
+    --surface: #111c16;
+    --surface-2: #17251d;
+    --surface-3: #203126;
+    --ink: #eaefe6;
+    --ink-2: #a9b5ac;
+    --ink-3: #8d9a91;
+    --line: rgb(234 239 230 / 0.12);
+    --accent: #eba640;
+    --accent-ink: #0f1e16;
+    --pasture: #1c3a29;
+    --pasture-ink: #eaefe6;
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-pasture: var(--pasture);
+  --color-pasture-ink: var(--pasture-ink);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Testimonials marquee. Pauses on hover/focus; static under reduced motion. */
+@keyframes marquee {
+  to { transform: translateX(calc(-100% / 3)); }
+}
+.marquee-track {
+  animation: marquee 48s linear infinite;
+}
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee-track { animation: none; }
+  .marquee { overflow-x: auto; }
+}
