@@ -9,6 +9,7 @@ import HowWeWork from "@/components/sections/HowWeWork";
 import Manifesto from "@/components/sections/Manifesto";
 import Services from "@/components/sections/Services";
 import Work from "@/components/sections/Work";
+import ThreeRoot from "@/components/three/ThreeRoot";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
       <Footer />
       <SectionCounter />
       <Motion />
+      <ThreeRoot />
     </>
   );
 }

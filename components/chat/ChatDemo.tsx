@@ -3,11 +3,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import ChatIconSvg from "@/components/chat/ChatIcons";
 import PhoneMockup from "@/components/chat/PhoneMockup";
-import { chatScript, chatTiming, type ChatMessage } from "@/components/chat/chatScript";
+import { BOOKED_EVENT, chatScript, chatTiming, type ChatMessage } from "@/components/chat/chatScript";
 import { prefersReducedMotion } from "@/lib/useReducedMotion";
-
-/** Fired on window when the booking chip appears (the 3D calendar and star react). */
-export const BOOKED_EVENT = "twofold:booked";
 
 export function Bubble({ message, animate }: { message: ChatMessage; animate?: boolean }) {
   const enter = animate ? "bubble-in" : "";

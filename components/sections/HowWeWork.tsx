@@ -22,7 +22,7 @@ export default function HowWeWork() {
         <ol className="grid gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-6" data-steps>
           {steps.map((s, i) => (
             <li key={s.title} className="flex flex-col gap-4 border-t-2 border-cream-soft/30 pt-6" data-step>
-              <SceneSlot scene={s.scene} className="h-[140px] w-full" />
+              <SceneSlot scene={s.scene} className="h-[140px] w-full" sizes="(min-width: 1024px) 34vw, (min-width: 768px) 50vw, 100vw" />
               <p aria-hidden="true" className="font-display text-[80px] leading-none text-orange md:text-[96px]">
                 {String(i + 1).padStart(2, "0")}
               </p>

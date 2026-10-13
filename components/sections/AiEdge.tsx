@@ -37,7 +37,7 @@ export default function AiEdge() {
         </div>
 
         <div className="relative flex flex-col items-center gap-5">
-          <SceneSlot scene="edge" className="pointer-events-none absolute -inset-x-6 -inset-y-10 -z-10 hidden !bg-transparent md:block" />
+          <SceneSlot scene="edge" className="pointer-events-none absolute -inset-x-6 -inset-y-10 -z-10 hidden md:block" sizes="40vw" />
           <ChatDemo />
         </div>
       </div>

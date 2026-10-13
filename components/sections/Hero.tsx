@@ -23,7 +23,7 @@ export default function Hero() {
             </Button>
           </div>
         </div>
-        <SceneSlot scene="hero" className="h-[320px] w-full md:h-[440px] lg:h-[min(72svh,660px)]" />
+        <SceneSlot scene="hero" className="h-[320px] w-full md:h-[440px] lg:h-[min(72svh,660px)]" sizes="(min-width: 1024px) 45vw, 100vw" />
       </div>
 
       <p className="t-label absolute bottom-8 left-(--gutter) hidden items-center gap-3 md:flex" aria-hidden="true">

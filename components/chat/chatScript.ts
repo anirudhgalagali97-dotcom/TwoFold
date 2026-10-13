@@ -23,3 +23,6 @@ export const chatTiming = {
   typing: 800,
   gap: 1200,
 };
+
+/** Fired on window when the booking chip appears (the 3D calendar and star react). */
+export const BOOKED_EVENT = "twofold:booked";

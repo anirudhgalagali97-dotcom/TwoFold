@@ -1,3 +1,12 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
+import Image from "next/image";
+import { useThreeStatus } from "@/components/three/threeStore";
+
+const SceneView = dynamic(() => import("@/components/three/SceneView"), { ssr: false });
+
 export type SceneName =
   | "hero"
   | "manifesto"
@@ -17,15 +26,46 @@ type SceneSlotProps = {
   className?: string;
   /** Hover / emphasis state passed to the scene (e.g. faster spin). */
   active?: boolean;
+  /** How the still fallback fits the box. */
+  fit?: "contain" | "cover";
+  /** next/image `sizes` for the still fallback. */
+  sizes?: string;
 };
 
-/** Where a 3D scene renders. Decorative: every meaning is also in text. */
-export default function SceneSlot({ scene, className = "" }: SceneSlotProps) {
+/**
+ * Where a 3D scene renders. Shows a still render from public/fallback/ until
+ * the live canvas is ready, and permanently on low-power devices, under
+ * reduced motion or without WebGL. Decorative: every meaning is also in text.
+ */
+export default function SceneSlot({ scene, className = "", active, fit = "contain", sizes = "(min-width: 1024px) 33vw, 100vw" }: SceneSlotProps) {
+  const status = useThreeStatus();
+  const ref = useRef<HTMLDivElement>(null);
+  const [el, setEl] = useState<HTMLDivElement | null>(null);
+
+  // Only mount a View for slots that are actually laid out (some are hidden on mobile).
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+    const ro = new ResizeObserver(([entry]) => {
+      setEl(entry.contentRect.width > 0 && entry.contentRect.height > 0 ? node : null);
+    });
+    ro.observe(node);
+    return () => ro.disconnect();
+  }, []);
+
   return (
-    <div
-      aria-hidden="true"
-      data-scene={scene}
-      className={`rounded-3xl bg-current/10 ${className}`}
-    />
+    <div ref={ref} aria-hidden="true" data-scene={scene} className={`${/\b(absolute|fixed)\b/.test(className) ? "" : "relative"} ${className}`}>
+      <Image
+        src={`/fallback/${scene}.webp`}
+        alt=""
+        fill
+        sizes={sizes}
+        className={`select-none ${fit === "cover" ? "object-cover" : "object-contain"} transition-opacity duration-500 ${
+          status === "ready" ? "opacity-0" : "opacity-100"
+        }`}
+        draggable={false}
+      />
+      {status !== "off" && el && <SceneView scene={scene} active={active} el={el} />}
+    </div>
   );
 }
