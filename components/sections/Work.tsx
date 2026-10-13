@@ -1,6 +1,7 @@
 import Eyebrow from "@/components/Eyebrow";
 import Section from "@/components/Section";
 import SceneSlot from "@/components/three/SceneSlot";
+import { site } from "@/lib/site";
 
 export default function Work() {
   return (
@@ -31,7 +32,7 @@ export default function Work() {
             <p className="t-label text-ink-soft">Built in-house</p>
             <h3 className="font-display text-[32px] leading-none uppercase md:text-[36px]">The Twofold demo bot</h3>
             <p className="t-body text-ink-soft">
-              Our own AI receptionist, built in-house. Message it on WhatsApp: [demo number].
+              Our own AI receptionist, built in-house. Message it on WhatsApp: {site.demoNumber}.
             </p>
           </article>
         </div>

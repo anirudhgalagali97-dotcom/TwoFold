@@ -9,7 +9,7 @@ export default function Hero() {
       <div className="container-x grid flex-1 items-center gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
         <div className="flex min-w-0 flex-col gap-6 md:gap-8">
           <Eyebrow>AI-powered marketing studio · Bangalore</Eyebrow>
-          <h1 id="hero-title" className="t-display" data-reveal>
+          <h1 id="hero-title" className="t-display">
             Marketing with a second brain.
           </h1>
           <p className="t-body max-w-[540px]">
@@ -23,7 +23,7 @@ export default function Hero() {
             </Button>
           </div>
         </div>
-        <SceneSlot scene="hero" className="h-[320px] w-full md:h-[440px] lg:h-[min(72svh,660px)]" sizes="(min-width: 1024px) 45vw, 100vw" />
+        <SceneSlot scene="hero" className="h-[320px] w-full md:h-[440px] lg:h-[min(72svh,660px)]" sizes="(min-width: 1024px) 45vw, 100vw" eager />
       </div>
 
       <p className="t-label absolute bottom-8 left-(--gutter) hidden items-center gap-3 md:flex" aria-hidden="true">

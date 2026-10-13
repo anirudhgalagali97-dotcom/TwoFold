@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Anton, DM_Sans } from "next/font/google";
-import SmoothScroll from "@/components/SmoothScroll";
+import { Analytics } from "@vercel/analytics/next";
+import { SmoothScrollLoader } from "@/components/MotionLoader";
+import { site } from "@/lib/site";
 import "./globals.css";
 
 const anton = Anton({
@@ -18,9 +20,26 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Twofold — AI-Powered Marketing for Small Businesses in Bangalore",
-  description:
-    "Websites, Instagram, ads and an AI receptionist that replies to every customer. Twofold is the AI-powered marketing team for small businesses in Bangalore.",
+  metadataBase: new URL(site.url),
+  title: site.title,
+  description: site.description,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    url: "/",
+    siteName: site.name,
+    title: site.title,
+    description: site.description,
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Twofold: marketing with a second brain." }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.title,
+    description: site.description,
+    images: ["/og-image.png"],
+  },
+  icons: { icon: "/icon.svg" },
 };
 
 export const viewport: Viewport = {
@@ -38,7 +57,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           Skip to content
         </a>
         {children}
-        <SmoothScroll />
+        <SmoothScrollLoader />
+        {/* Vercel Web Analytics (cookieless); its script only exists on Vercel deployments. */}
+        {process.env.VERCEL && <Analytics />}
       </body>
     </html>
   );

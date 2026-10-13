@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import { heroPlaceholder } from "@/components/three/heroPlaceholder";
 import { useThreeStatus } from "@/components/three/threeStore";
 
 const SceneView = dynamic(() => import("@/components/three/SceneView"), { ssr: false });
@@ -30,6 +31,8 @@ type SceneSlotProps = {
   fit?: "contain" | "cover";
   /** next/image `sizes` for the still fallback. */
   sizes?: string;
+  /** Load the still at high priority (the hero, which is above the fold). */
+  eager?: boolean;
 };
 
 /**
@@ -37,7 +40,14 @@ type SceneSlotProps = {
  * the live canvas is ready, and permanently on low-power devices, under
  * reduced motion or without WebGL. Decorative: every meaning is also in text.
  */
-export default function SceneSlot({ scene, className = "", active, fit = "contain", sizes = "(min-width: 1024px) 33vw, 100vw" }: SceneSlotProps) {
+export default function SceneSlot({
+  scene,
+  className = "",
+  active,
+  fit = "contain",
+  sizes = "(min-width: 1024px) 33vw, 100vw",
+  eager = false,
+}: SceneSlotProps) {
   const status = useThreeStatus();
   const ref = useRef<HTMLDivElement>(null);
   const [el, setEl] = useState<HTMLDivElement | null>(null);
@@ -60,6 +70,12 @@ export default function SceneSlot({ scene, className = "", active, fit = "contai
         alt=""
         fill
         sizes={sizes}
+        // Stills are pre-compressed WebP (scripts/render-fallbacks.mjs), so skip the optimizer.
+        unoptimized
+        preload={eager}
+        placeholder={eager && scene === "hero" ? (heroPlaceholder as `data:image/${string}`) : "empty"}
+        loading={eager ? undefined : "lazy"}
+        fetchPriority={eager ? "high" : undefined}
         className={`select-none ${fit === "cover" ? "object-cover" : "object-contain"} transition-opacity duration-500 ${
           status === "ready" ? "opacity-0" : "opacity-100"
         }`}

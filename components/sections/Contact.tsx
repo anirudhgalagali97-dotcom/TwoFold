@@ -2,13 +2,14 @@ import AuditForm from "@/components/AuditForm";
 import Eyebrow from "@/components/Eyebrow";
 import Section from "@/components/Section";
 import SceneSlot from "@/components/three/SceneSlot";
+import { site } from "@/lib/site";
 
 const details: { label?: string; value: string }[] = [
-  { label: "Email", value: "[email]" },
-  { label: "WhatsApp", value: "[WhatsApp number]" },
-  { label: "Location", value: "Bangalore, India" },
-  { value: "Instagram [handle]" },
-  { value: "LinkedIn [page]" },
+  { label: "Email", value: site.email },
+  { label: "WhatsApp", value: site.whatsapp },
+  { label: "Location", value: `${site.city}, ${site.country}` },
+  { value: `Instagram ${site.instagram}` },
+  { value: `LinkedIn ${site.linkedin}` },
 ];
 
 export default function Contact() {
