@@ -32,7 +32,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         <a
           href="#main"
-          className="t-label sr-only z-[60] rounded-full bg-lemon px-6 py-3 text-ink focus:not-sr-only focus:fixed focus:top-4 focus:left-4"
+          className="t-label sr-only z-[60] min-h-11 rounded-full bg-lemon px-6 py-3 text-ink focus:not-sr-only focus:fixed focus:top-4 focus:left-4"
         >
           Skip to content
         </a>

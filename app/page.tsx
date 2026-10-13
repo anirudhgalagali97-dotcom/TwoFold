@@ -1,26 +1,26 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import SectionCounter from "@/components/SectionCounter";
-import { sections } from "@/lib/tokens";
+import AiEdge from "@/components/sections/AiEdge";
+import Contact from "@/components/sections/Contact";
+import Hero from "@/components/sections/Hero";
+import HowWeWork from "@/components/sections/HowWeWork";
+import Manifesto from "@/components/sections/Manifesto";
+import Services from "@/components/sections/Services";
+import Work from "@/components/sections/Work";
 
-// Phase 1: blank sections in each background tone, to check the header,
-// counter and footer. Phase 2 replaces these with the real sections.
 export default function Home() {
   return (
     <>
       <Header />
       <main id="main">
-        {sections.map((s, i) => (
-          <section
-            key={s.id}
-            id={s.id}
-            data-section
-            data-index={i}
-            data-tone={s.tone}
-            aria-label={s.id}
-            className={`tone-${s.tone} bg-tone min-h-svh`}
-          />
-        ))}
+        <Hero />
+        <Manifesto />
+        <Services />
+        <AiEdge />
+        <HowWeWork />
+        <Work />
+        <Contact />
       </main>
       <Footer />
       <SectionCounter />
