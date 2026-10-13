@@ -34,7 +34,7 @@ export default function Contact() {
             ))}
           </ul>
         </div>
-        <div className="min-w-0 rounded-[28px] border-2 border-ink p-6 md:p-10">
+        <div className="relative min-w-0 rounded-[28px] border-2 border-ink p-6 md:p-10">
           <AuditForm />
         </div>
       </div>

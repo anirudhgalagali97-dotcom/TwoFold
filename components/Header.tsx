@@ -13,6 +13,7 @@ const HEADER_PROBE = 44;
 export default function Header() {
   const { tone: sectionTone } = useActiveSection(HEADER_PROBE);
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const menuButton = useRef<HTMLButtonElement>(null);
   const overlay = useRef<HTMLDivElement>(null);
   const tone = open ? "ink" : sectionTone;
@@ -20,6 +21,15 @@ export default function Header() {
   const close = useCallback(() => {
     setOpen(false);
     menuButton.current?.focus();
+  }, []);
+
+  // Same flat colour as the section behind, so it reads as transparent while
+  // keeping scrolled text from showing through the header.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
@@ -51,7 +61,7 @@ export default function Header() {
 
   return (
     <header
-      className={`tone-${tone} fixed inset-x-0 top-0 z-50 transition-colors duration-300`}
+      className={`tone-${tone} fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${scrolled ? "bg-tone" : ""}`}
     >
       <div className="container-x flex h-[88px] items-center justify-between gap-6">
         <Link
