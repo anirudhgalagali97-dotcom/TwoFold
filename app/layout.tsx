@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Anton, DM_Sans } from "next/font/google";
+import SmoothScroll from "@/components/SmoothScroll";
 import "./globals.css";
 
 const anton = Anton({
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           Skip to content
         </a>
         {children}
+        <SmoothScroll />
       </body>
     </html>
   );

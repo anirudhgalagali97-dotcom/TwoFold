@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import Motion from "@/components/Motion";
 import SectionCounter from "@/components/SectionCounter";
 import AiEdge from "@/components/sections/AiEdge";
 import Contact from "@/components/sections/Contact";
@@ -24,6 +25,7 @@ export default function Home() {
       </main>
       <Footer />
       <SectionCounter />
+      <Motion />
     </>
   );
 }

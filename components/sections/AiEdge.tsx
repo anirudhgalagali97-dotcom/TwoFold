@@ -1,5 +1,4 @@
 import ChatDemo from "@/components/chat/ChatDemo";
-import PhoneMockup from "@/components/chat/PhoneMockup";
 import Eyebrow from "@/components/Eyebrow";
 import Section from "@/components/Section";
 import SceneSlot from "@/components/three/SceneSlot";
@@ -39,9 +38,7 @@ export default function AiEdge() {
 
         <div className="relative flex flex-col items-center gap-5">
           <SceneSlot scene="edge" className="pointer-events-none absolute -inset-x-6 -inset-y-10 -z-10 hidden !bg-transparent md:block" />
-          <PhoneMockup>
-            <ChatDemo />
-          </PhoneMockup>
+          <ChatDemo />
         </div>
       </div>
     </Section>

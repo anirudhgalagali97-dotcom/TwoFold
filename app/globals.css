@@ -151,3 +151,29 @@ body {
     animation-iteration-count: 1 !important;
   }
 }
+
+/* Section 05 horizontal steps (desktop, set by components/Motion.tsx) */
+.is-horizontal [data-steps] {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--space-4);
+  overflow: visible;
+}
+.is-horizontal [data-step] {
+  flex: 0 0 min(34vw, 500px);
+}
+
+/* Chat bubble entrance */
+@keyframes bubble-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+}
+.bubble-in {
+  animation: bubble-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes typing-dot {
+  0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+  30% { opacity: 1; transform: translateY(-3px); }
+}
