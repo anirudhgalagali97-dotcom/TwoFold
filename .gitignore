@@ -1,6 +1,21 @@
-node_modules
-.next
-out
+# dependencies
+/node_modules
+
+# next.js
+/.next/
+/out/
 next-env.d.ts
 *.tsbuildinfo
+
+# production
+/build
+
+# env files (keep .env.example)
+.env*
+!.env.example
+
+# misc
 .DS_Store
+*.pem
+npm-debug.log*
+.vercel
